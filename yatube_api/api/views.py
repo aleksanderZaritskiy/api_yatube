@@ -1,11 +1,11 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 
-from posts.models import Post, Group, Comment, User
+from posts.models import Post, Group, Comment
 from .permissions import OnlyAuthorHasPerm
 from .serializers import (
     PostSerializer, GroupSerializer,
-    CommentSerializer, UserSerializer,
+    CommentSerializer
 )
 
 
@@ -36,8 +36,3 @@ class CommentViewSet(viewsets.ModelViewSet):
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-
-
-class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
